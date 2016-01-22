@@ -37,7 +37,7 @@ However you can also add the `src` attribute to the element if you prefer:
 <div class="offthread-img" alt="A picture of a cat." src="cat.png"></div>
 ```
 
-And now you no longer need to set it in the JavaScript.
+And now you no longer need to set the `src` in your JavaScript as the library will pick it up.
 
 ### Other attributes
 
