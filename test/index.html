@@ -1,0 +1,203 @@
+<!--
+
+Copyright 2015 Google Inc. All rights reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+-->
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="author" content="Paul Lewis" />
+  <meta name="viewport" content="width=device-width">
+  <title></title>
+  <style>
+
+    body {
+      background: #FAFAFA;
+      font-family: Arial;
+      padding-top: 60px;
+      color: #666;
+    }
+
+    h1 {
+      font-size: 32px;
+    }
+
+    .test {
+      padding-bottom: 2em;
+      border-bottom: 1px solid #CCC;
+      margin-bottom: 2em;
+    }
+
+    .offthread-img {
+      display: inline;
+    }
+
+    .side-by-side {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .left, .right {
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .background-test-basic,
+    .background-test-contain,
+    .background-test-cover {
+      width: 240px;
+      height: 240px;
+      display: block;
+      background-repeat: no-repeat;
+    }
+
+    .background-test-contain {
+      background-size: contain;
+    }
+
+    .background-test-cover {
+      background-size: cover;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .error {
+      position: fixed;
+      top: 20px;
+      padding: 10px;
+      background: #333;
+      border-radius: 2px;
+      box-shadow: 0 4px 4px rgba(0,0,0,0.3);
+      color: #FFF;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      line-height: 1.4;
+    }
+  </style>
+
+</head>
+<body>
+
+  <div class="error hidden">
+  <code>createImageBitmap</code> is unavailable. Try in Chrome Canary with "Enable experimental canvas features" enabled in about:flags, or in Firefox 42+.
+  </div>
+
+  <section class="test">
+    <h1>OffthreadImage Tests</h1>
+    <p>Left hand side is off-thread, right hand side are &lt;img&gt; elements. Photo by <a href="https://unsplash.com/photos/hLxqYJspAkE">Ales Krivec</a>.</p>
+  </section>
+
+  <section class="test">
+    <h2>Image (simple)</h2>
+    <section class="side-by-side">
+      <div class="left">
+        <div class="offthread-img" alt="Test Image" src="image.jpg"></div>
+      </div>
+      <div class="right">
+        <img alt="Test Image" src="image.jpg"></div>
+      </div>
+    </section>
+  </section>
+
+  <section class="test">
+    <h2>Image (width set)</h2>
+    <section class="side-by-side">
+      <div class="left">
+        <div class="offthread-img" alt="Test Image" src="image.jpg" width="120"></div>
+      </div>
+      <div class="right">
+        <img alt="Test Image" src="image.jpg" width="120"></div>
+      </div>
+    </section>
+  </section>
+
+  <section class="test">
+    <h2>Image (height set)</h2>
+    <section class="side-by-side">
+      <div class="left">
+        <div class="offthread-img" alt="Test Image" src="image.jpg" height="120"></div>
+      </div>
+      <div class="right">
+        <img alt="Test Image" src="image.jpg" height="120"></div>
+      </div>
+    </section>
+  </section>
+
+  <section class="test">
+    <h2>Image (width and height set)</h2>
+    <section class="side-by-side">
+      <div class="left">
+        <div class="offthread-img" alt="Test Image" src="image.jpg" width="100" height="120"></div>
+      </div>
+      <div class="right">
+        <img alt="Test Image" src="image.jpg" width="100" height="120"></div>
+      </div>
+    </section>
+  </section>
+
+  <section class="test">
+    <h2>Image (background)</h2>
+    <section class="side-by-side">
+      <div class="left">
+        <div class="offthread-img background-test-basic" alt="Test Image" bg-src="image.jpg"></div>
+      </div>
+      <div class="right" style="background">
+        <div class="offthread-img background-test-basic" alt="Test Image" style="background-image:url(image.jpg)"></div>
+      </div>
+    </section>
+  </section>
+
+  <section class="test">
+    <h2>Image (background-contain)</h2>
+    <section class="side-by-side">
+      <div class="left">
+        <div class="offthread-img background-test-contain" alt="Test Image" bg-src="image.jpg"></div>
+      </div>
+      <div class="right" style="background">
+        <div class="offthread-img background-test-contain" alt="Test Image" style="background-image:url(image.jpg)"></div>
+      </div>
+    </section>
+  </section>
+
+  <section class="test">
+    <h2>Image (background-cover)</h2>
+    <section class="side-by-side">
+      <div class="left">
+        <div class="offthread-img background-test-cover" alt="Test Image" bg-src="image.jpg"></div>
+      </div>
+      <div class="right" style="background">
+        <div class="offthread-img background-test-cover" alt="Test Image" style="background-image:url(image.jpg)"></div>
+      </div>
+    </section>
+  </section>
+
+  <script src="../dist/offthread-img.js"></script>
+  <script>
+
+    if (!OffthreadImage.available)
+      document.querySelector('.error').classList.remove('hidden');
+    else
+      OffthreadImage.createFromSelector('.offthread-img');
+  </script>
+</body>
+</html>
