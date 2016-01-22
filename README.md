@@ -8,7 +8,7 @@ a canvas.
 
 ## I would like to see it now, please!
 
-Of course. Firstly you will need Chrome Canary, and you should switch on Enable experimental canvas features" enabled in about:flags. Then head to <a href="https://googlechrome.github.io/offthread-image/test">the test page</a>.
+Of course. Firstly you will need Chrome Canary, and you should switch on **"Enable experimental canvas features"** in about:flags. Then head to <a href="https://googlechrome.github.io/offthread-image/test">the test page</a>.
 
 ## Docs & Usage
 
