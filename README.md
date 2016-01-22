@@ -8,7 +8,7 @@ a canvas.
 
 ## I would like to see it now, please!
 
-Of course. Firstly you will need Chrome Canary, and you should switch on Enable experimental canvas features" enabled in about:flags. Then head to <a href="https://googlechrome.github.io/test">the test page</a>.
+Of course. Firstly you will need Chrome Canary, and you should switch on Enable experimental canvas features" enabled in about:flags. Then head to <a href="https://googlechrome.github.io/offthread-image/test">the test page</a>.
 
 ## Docs & Usage
 
@@ -88,7 +88,7 @@ If you use a background image, the styles of the target element will be inspecte
 }
 ```
 
-Finally, if you want to read through the API, you can <a href="https://googlechrome.github.io/">check out the docs</a>.
+Finally, if you want to read through the API, you can <a href="https://googlechrome.github.io/offthread-image">check out the docs</a>.
 
 ## Support & Issues
 
