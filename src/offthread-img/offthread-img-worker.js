@@ -17,6 +17,8 @@
 'use strict';
 
 let log = self.console.log.bind(self.console);
+let processing = 0;
+let concurrentDownloads = 3;
 
 class ImageHandler {
 
@@ -28,17 +30,26 @@ class ImageHandler {
   enqueue (toEnqueue) {
 
     // Bail if this URL is already enqueued.
-    if (this.queue.indexOf(toEnqueue) >= 0)
+    if (this.queue.indexOf(toEnqueue) >= 0) {
       return;
+    }
 
     this.queue.push(toEnqueue);
-    this.processQueue();
+
+    if (processing < concurrentDownloads) {
+      this.processQueue();
+    }
+
   }
 
   processQueue () {
 
-    if (this.queue.length === 0)
+    if (this.queue.length === 0) {
+      processing = 0;
       return;
+    }
+
+    processing++;
 
     let url = this.queue.shift();
 
