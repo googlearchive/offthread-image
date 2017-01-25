@@ -30,13 +30,13 @@ class ImageHandler {
   enqueue (toEnqueue) {
 
     // Bail if this URL is already enqueued.
-    if (this.queue.indexOf(toEnqueue) >= 0){
+    if (this.queue.indexOf(toEnqueue) >= 0) {
       return;
     }
 
     this.queue.push(toEnqueue);
 
-    if( processing < concurrentDownloads ) {
+    if (processing < concurrentDownloads) {
       this.processQueue();
     }
 
